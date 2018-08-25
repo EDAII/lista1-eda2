@@ -6,11 +6,16 @@ $(document).ready(function(){
 
             let meio
             let inf = 0
-            let sup = vet.length-1
+            let sup = vet.length
 
+            
             meio = parseInt((0 + sup)/2);
             
-            if(sup<=1){
+            if(sup%2==0 && vet[meio] < chave ){
+                meio++; 
+            }
+
+            if(sup<=1 && vet[meio]!=chave){
                 alert("Numero não encontrado")
                 return -1
             }
@@ -20,11 +25,11 @@ $(document).ready(function(){
             }
             if (chave < vet[meio]){
                 $("#"+vet[meio]).toggleClass("bg-danger");
-                binary_search(chave,vet.slice(inf,meio+1))
+                binary_search(chave,vet.slice(inf,meio))
             }
             else if (chave > vet[meio]){
                 $("#"+vet[meio]).toggleClass("bg-danger");
-                binary_search(chave,vet.slice(meio,sup+1))
+                binary_search(chave,vet.slice(meio+1,sup))
             }
         }, 500)
 
